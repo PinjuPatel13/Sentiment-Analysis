@@ -10,6 +10,8 @@ from googletrans import Translator
 # Download necessary NLTK datasets (only needed once)
 nltk.download('wordnet')
 nltk.download('stopwords')
+nltk.download('punkt')
+
 
 # Initialize objects
 lemmatizer = WordNetLemmatizer()
