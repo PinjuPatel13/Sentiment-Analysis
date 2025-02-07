@@ -7,30 +7,30 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from googletrans import Translator
 
-# 🔽 Download necessary NLTK datasets (only needed once)
+# Download necessary NLTK datasets (only needed once)
 nltk.download('wordnet')
 nltk.download('stopwords')
 
-# 🔽 Initialize objects
+# Initialize objects
 lemmatizer = WordNetLemmatizer()
 stopwords_set = set(stopwords.words('english'))
 translator = Translator()
 
 app = Flask(__name__)
 
-# 🔽 Load the sentiment analysis model and TF-IDF vectorizer
+# Load the Naïve Bayes model and TF-IDF vectorizer
 with open('clf.pkl', 'rb') as f:
     clf = pickle.load(f)
 with open('tfidf.pkl', 'rb') as f:
     tfidf = pickle.load(f)
 
-# 🔽 Preprocessing Function
+# Preprocessing Function
 def preprocess_text(text):
     text = re.sub('<[^>]*>', '', text)  # Remove HTML tags
     text = re.sub(r'[^\w\s]', '', text)  # Remove punctuation
     text = text.lower()  # Convert to lowercase
     words = text.split()
-    words = [lemmatizer.lemmatize(word) for word in words if word not in stopwords_set]  
+    words = [lemmatizer.lemmatize(word) for word in words if word not in stopwords_set]
     return " ".join(words)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -49,16 +49,16 @@ def analyze_sentiment():
         if comment.strip():
             original_text = comment
 
-            # 🔽 Translate to English
+            # Translate to English
             try:
                 translated_text = translator.translate(comment, dest='en').text
             except Exception:
                 translated_text = "Translation Error"
 
-            # 🔽 Preprocess text
+            # Preprocess text
             preprocessed_text = preprocess_text(translated_text)
 
-            # 🔽 Predict Sentiment
+            # Predict Sentiment
             if preprocessed_text:
                 comment_vector = tfidf.transform([preprocessed_text])
                 prediction = clf.predict_proba(comment_vector)  # Get probabilities
@@ -90,4 +90,3 @@ def analyze_sentiment():
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
-
