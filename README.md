@@ -1,1 +1,1 @@
-# Sentiment-Analysis-Mahcine-Learning
+# Sentiment-Analysis-Machine-Learning
