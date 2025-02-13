@@ -1,3 +1,4 @@
+
 # 😊 Sentiment Analysis Project with NLTK
 
 ## 🚀 Overview
@@ -9,45 +10,51 @@ This project performs sentiment analysis using the Natural Language Toolkit (NLT
 - ✅ Visualization of sentiment distribution
 - ✅ User input for real-time sentiment analysis
 
-## 📥 Installation
-### 🔹 Prerequisites
-Ensure you have Python installed (preferably 3.7+). You also need Jupyter Notebook if you want to run the `.ipynb` file interactively.
+## 📂 Project Structure
+```
+📦Sentiment-Analysis
+ ┣ 📂templates
+ ┃ ┗ 📜index.html
+ ┣ 📜Sentiment Analysis Project with NLTK.ipynb
+ ┣ 📜app.py
+ ┣ 📜clf.pkl
+ ┣ 📜requirements.txt
+ ┗ 📜tfidf.pkl
+```
 
-### 🔹 Install Dependencies
-Run the following command to install the required libraries:
+- `Sentiment Analysis Project with NLTK.ipynb`: Jupyter Notebook demonstrating the sentiment analysis process.
+- `app.py`: Flask web application for real-time sentiment analysis.
+- `clf.pkl`: Serialized classifier model.
+- `tfidf.pkl`: Serialized TF-IDF vectorizer.
+- `requirements.txt`: List of required Python libraries.
+- `templates/index.html`: HTML template for the Flask app.
+
+## 📚 Libraries Used
+- **Python 3.7+**
+- **NLTK**: Natural Language Toolkit for text processing.
+- **Flask**: Web framework for the application.
+- **Pickle**: For serializing the model and vectorizer.
+- **Jupyter Notebook**: For interactive code demonstrations.
+
+## 📥 Installation
+### Prerequisites
+Ensure you have Python 3.7 or higher installed.
+
+### Install Dependencies
+Navigate to the project directory and run:
 ```bash
-pip install nltk pandas matplotlib
+pip install -r requirements.txt
 ```
 
 ## 🛠️ Usage
-1. 📂 Clone or download the repository.
-2. 📜 Open the Jupyter Notebook (`Sentiment Analysis Project with NLTK.ipynb`).
-3. ▶️ Run the notebook step by step to:
-   - 🔄 Load and preprocess text data.
-   - 📊 Analyze sentiment using NLTK.
-   - 📈 Visualize results.
-4. 📝 Modify the input text in the notebook to analyze custom sentences.
+1. **Run the Flask App**:
+   ```bash
+   python app.py
+   ```
+   Access the web application at `http://127.0.0.1:5000/`.
 
-## 🎯 Example
-```python
-from nltk.sentiment import SentimentIntensityAnalyzer
-sia = SentimentIntensityAnalyzer()
-text = "I love this product! It's amazing."
-sentiment = sia.polarity_scores(text)
-print(sentiment)
-```
-
-Output:
-```json
-{'neg': 0.0, 'neu': 0.254, 'pos': 0.746, 'compound': 0.8516}
-```
-
-## 📁 Project Structure
-```
-📂 Sentiment-Analysis-Project
-│-- 📄 Sentiment Analysis Project with NLTK.ipynb
-│-- 📄 README.md
-```
+2. **Run the Jupyter Notebook**:
+   Open `Sentiment Analysis Project with NLTK.ipynb` to explore the sentiment analysis process step-by-step.
 
 ## 🤝 Contributing
 Feel free to fork this repository and submit pull requests with improvements or additional features.
@@ -56,5 +63,4 @@ Feel free to fork this repository and submit pull requests with improvements or 
 This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
-Pinju_Patel
-
+[Pinju Patel](https://github.com/PinjuPatel13)
